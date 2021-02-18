@@ -9,8 +9,8 @@ correlation_worker.addEventListener('message', interpret_correlation_result)
 
 async function initialize() {
     const A4 = 440
-    const notes = ['ラ', 'ラ#', 'シ', 'ド', 'ド#', 'レ', 'レ#', 'ミ', 'ミ', 'ファ#', 'ソ', 'ソ#']
-
+    const notes = ['ラ', 'ラ#', 'シ', 'ド', 'ド#', 'レ', 'レ#', 'ミ', 'ファ', 'ファ#', 'ソ', 'ソ#']
+    const notes_en = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
     for (let i = 0; i < 30; i++) {
         const note_frequency = A4 * Math.pow(2, i / 12)
         const note_name = notes[i % 12]
@@ -70,7 +70,7 @@ function interpret_correlation_result(event) {
     // Find the maximum in the list of magnitudes.
     let maximum_index = -1
     let maximum_magnitude = 0
-    for (var i = 0; i < magnitudes.length; i++) {
+    for (let i = 0; i < magnitudes.length; i++) {
         if (magnitudes[i] <= maximum_magnitude) {
             continue
         }
@@ -83,10 +83,12 @@ function interpret_correlation_result(event) {
     // with magnitudes significantly above average.
     const average = magnitudes.reduce((a, b) => a + b, 0) / magnitudes.length
     const confidence = maximum_magnitude / average
-    const confidence_threshold = 10
+    const confidence_threshold = 30
     if (confidence > confidence_threshold) {
         const dominant_frequency = test_frequencies[maximum_index]
         document.getElementById('note-name').textContent = dominant_frequency.name
         //console.log(dominant_frequency.frequency)
+    } else {
+        document.getElementById('note-name').textContent = '(˘ω˘)'
     }
 }
