@@ -8,16 +8,19 @@ const correlation_worker = new Worker('./js/correlation_worker.js')
 correlation_worker.addEventListener('message', interpret_correlation_result)
 
 async function initialize() {
-    const A4 = 440
-    const notes = ['ラ', 'ラ#', 'シ', 'ド', 'ド#', 'レ', 'レ#', 'ミ', 'ファ', 'ファ#', 'ソ', 'ソ#']
-    const notes_en = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
-    for (let i = 0; i < 30; i++) {
-        const note_frequency = A4 * Math.pow(2, i / 12)
+    const G3 = 195.998
+    const notes = ['ソ', 'ソ#', 'ラ', 'ラ#', 'シ', 'ド', 'ド#', 'レ', 'レ#', 'ミ', 'ファ', 'ファ#']
+    const notes_en = ['G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#']
+    for (let i = 0; i < 36; i++) {
+        const note_frequency = G3 * Math.pow(2, i / 12)
         const note_name = notes[i % 12]
-        const note = { 'frequency': note_frequency, 'name': notes[i % 12] }
-        const just_above = { 'frequency': note_frequency * Math.pow(2, 1 / 48), 'name': note_name + ' (ちょっと高い)' }
-        const just_below = { 'frequency': note_frequency * Math.pow(2, -1 / 48), 'name': note_name + ' (ちょっと低い)' }
+        const note_name_en = notes_en[i % 12]
+
+        const note = { 'frequency': note_frequency, 'name': note_name, 'name_en': note_name_en, 'gap': false }
+        const just_above = { 'frequency': note_frequency * Math.pow(2, 1 / 48), 'name': note_name, 'name_en': note_name_en, 'gap': true }
+        const just_below = { 'frequency': note_frequency * Math.pow(2, -1 / 48), 'name': note_name, 'name_en': note_name_en, 'gap': true }
         test_frequencies = test_frequencies.concat([just_below, note, just_above])
+        console.log(test_frequencies)
     }
 
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
@@ -60,6 +63,8 @@ function use_stream(stream) {
     script_processor.onaudioprocess = window.capture_audio
 }
 
+let score = 0
+let sum_counter = 0
 function interpret_correlation_result(event) {
     const frequency_amplitudes = event.data.frequency_amplitudes
 
@@ -84,11 +89,27 @@ function interpret_correlation_result(event) {
     const average = magnitudes.reduce((a, b) => a + b, 0) / magnitudes.length
     const confidence = maximum_magnitude / average
     const confidence_threshold = 30
+    const dominant_frequency = test_frequencies[maximum_index]
     if (confidence > confidence_threshold) {
-        const dominant_frequency = test_frequencies[maximum_index]
-        document.getElementById('note-name').textContent = dominant_frequency.name
-        //console.log(dominant_frequency.frequency)
+        document.getElementById('note-name').textContent = `${dominant_frequency.name}(${dominant_frequency.name_en})`
     } else {
         document.getElementById('note-name').textContent = '(˘ω˘)'
+    }
+
+    // TODO receive target note name and check
+    // TODO consider gap true/false to deduction
+    // TODO workerize this and call when button pushed
+    // TODO how should I consider frequency value?(e.g. A1,A2,A3...)
+    // TODO sum_counter 40 means 10sec. change this more flexible
+
+    score += (confidence > 60 ? 60 : confidence) / 60
+    if (++sum_counter === 40) {
+        score /= 40
+
+        const score_str = String(Math.round(score * 100 * 1000) / 1000)
+        document.getElementById('score-main').textContent = score_str.split('.')[0]
+        document.getElementById('score-sub').textContent = `.${score_str.split('.')[1]}`
+        sum_counter = 0
+        score = 0
     }
 }
