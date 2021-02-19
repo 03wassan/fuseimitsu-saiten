@@ -28,7 +28,7 @@ async function initialize() {
 }
 
 function use_stream(stream) {
-    const audio_context = new AudioContext()
+    const audio_context = new (window.AudioContext || window.webkitAudioContext)()
     const microphone = audio_context.createMediaStreamSource(stream)
     const script_processor = audio_context.createScriptProcessor(1024, 1, 1)
 
