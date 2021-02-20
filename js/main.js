@@ -16,9 +16,9 @@ async function initialize() {
         const note_name = notes[i % 12]
         const note_name_en = notes_en[i % 12]
 
-        const note = { 'frequency': note_frequency, 'name': note_name, 'name_en': note_name_en, 'gap': false }
-        const just_above = { 'frequency': note_frequency * Math.pow(2, 1 / 48), 'name': note_name, 'name_en': note_name_en, 'gap': true }
-        const just_below = { 'frequency': note_frequency * Math.pow(2, -1 / 48), 'name': note_name, 'name_en': note_name_en, 'gap': true }
+        const note = { 'frequency': note_frequency, 'name': note_name, 'name_en': note_name_en, 'deduction': -1 }
+        const just_above = { 'frequency': note_frequency * Math.pow(2, 1 / 48), 'name': note_name, 'name_en': note_name_en, 'deduction': 0 }
+        const just_below = { 'frequency': note_frequency * Math.pow(2, -1 / 48), 'name': note_name, 'name_en': note_name_en, 'deduction': -1 }
         test_frequencies = test_frequencies.concat([just_below, note, just_above])
         console.log(test_frequencies)
     }
@@ -64,7 +64,14 @@ function use_stream(stream) {
 }
 
 let score = 0
+let scores = { 'prev-prev': -1, 'prev': -1, 'now': -1 }
 let sum_counter = 0
+let s
+
+// TODO
+const test_time = 20
+const target_note = 'ラ'
+
 function interpret_correlation_result(event) {
     const frequency_amplitudes = event.data.frequency_amplitudes
 
@@ -88,27 +95,61 @@ function interpret_correlation_result(event) {
     // with magnitudes significantly above average.
     const average = magnitudes.reduce((a, b) => a + b, 0) / magnitudes.length
     const confidence = maximum_magnitude / average
-    const confidence_threshold = 30
+    const confidence_threshold = 60
     const dominant_frequency = test_frequencies[maximum_index]
+
+    // TODO
+    document.getElementById('note-name').textContent = 'ラ'
+    document.getElementById('note-name-en').textContent = 'A'
+    /*
     if (confidence > confidence_threshold) {
-        document.getElementById('note-name').textContent = `${dominant_frequency.name}(${dominant_frequency.name_en})`
+        document.getElementById('note-name').textContent = `${dominant_frequency.name}`
+        document.getElementById('note-name-en').textContent = `${dominant_frequency.name_en}`
     } else {
         document.getElementById('note-name').textContent = '(˘ω˘)'
+        document.getElementById('note-name-en').textContent = '(˘ω˘)'
     }
+    */
 
     // TODO receive target note name and check
     // TODO consider gap true/false to deduction
     // TODO workerize this and call when button pushed
     // TODO how should I consider frequency value?(e.g. A1,A2,A3...)
-    // TODO sum_counter 40 means 10sec. change this more flexible
 
-    score += (confidence > 60 ? 60 : confidence) / 60
-    if (++sum_counter === 40) {
-        score /= 40
+    s = (confidence > confidence_threshold ? confidence_threshold : confidence) / confidence_threshold
+    if (dominant_frequency.name === target_note) {
+        score += s
+        console.log(`OK ${dominant_frequency.name}:`, s)
+    } else {
+        score += s * 0.3
+        console.log(`NG ${dominant_frequency.name}:`, s)
+    }
 
-        const score_str = String(Math.round(score * 100 * 1000) / 1000)
-        document.getElementById('score-main').textContent = score_str.split('.')[0]
-        document.getElementById('score-sub').textContent = `.${score_str.split('.')[1]}`
+    if (++sum_counter === test_time) {
+        score /= test_time
+
+        console.log(scores)
+
+        const score_int = Math.round(score * 100 * 1000) / 1000
+        if (scores['prev'] != -1) {
+            scores['prev-prev'] = scores['prev']
+            document.getElementById('score-prev-prev').textContent = scores['prev-prev']
+        }
+        if (scores['now'] != -1) {
+            scores['prev'] = scores['now']
+            document.getElementById('score-prev').textContent = parseFloat(
+                `${document.getElementById('score-main').textContent}${document.getElementById('score-sub').textContent}`
+            )
+        }
+        scores['now'] = score_int
+
+
+        const score_str = String(score_int)
+        const score_main = score_str.split('.')[0]
+        const score_sub = (score_str.indexOf('.') === -1) ? '.000' : `.${score_str.split('.')[1]}`
+
+        document.getElementById('score-main').textContent = score_main
+        document.getElementById('score-sub').textContent = score_sub
         sum_counter = 0
         score = 0
     }
