@@ -56,4 +56,10 @@ body {
    #username {
      margin-top: 1em;
    }
+h1 {
+  font-family: 'Stick', sans-serif;
+  font-size: 30pt;
+  color: #fff;
+  margin-left: 15px;
+}
 
