@@ -1,10 +1,24 @@
 'use strict'
 
 document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem("username")
+    const userinput = document.querySelector('#scene-init input')
+
+    if (saved !== null) {
+        userinput.value = saved
+    }
+
     const btn_start = document.querySelector('#btn-start')
     btn_start.addEventListener('click', () => {
-        const username = document.querySelector('#scene-init input')
-        document.querySelector('#username').innerText = username.value
+        const username = (() => {
+            if (userinput.value === '') {
+                return '名無し'
+            }
+            return userinput.value
+        })()
+
+        document.querySelector('#username').innerText = username
+        localStorage.setItem('username', username)
 
         switch_scene('main')
         initialize()
