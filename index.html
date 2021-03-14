@@ -6,7 +6,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Stick&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <link media="only screen and (max-device-width: 600px)" rel="stylesheet" href="./css/smart.css">
+    <link media="only screen and (min-device-width: 601px)" rel="stylesheet" href="./css/style.css">
     <script src="js/main.js"></script>
 </head>
 <body>
@@ -14,9 +16,12 @@
     </header>
     <section class="scene" id="scene-init">
         <h1>不精密採点 DX</h1>
+        <p>
+            せつめい: 表示名を入力してスタートを押してください。未入力でも大丈夫で、その場合「名無し」になります。<br/>
+            スタートを押すとお使いのデバイスでマイク使用許可を求めるポップアップが表示されます。許可することで採点を行うことが出来ます。
+        </p>
         <div>
-            <label>表示名: </label>
-            <input type="text" value="名無し" maxlength="15"/>
+            <input type="text" placeholder="名無し" maxlength="15"/>
             <button id="btn-start">スタート</button>
         </div>
     </section>

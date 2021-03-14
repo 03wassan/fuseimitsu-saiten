@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
+}
+body {
+  background-image: url('../image/bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.scene {
+  padding: 1em;
+}
+
+#scene-init {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.7);
+  margin: auto;
+  text-align: center;
+  width: 600px;
+  height: 400px;
+}
+  #scene-init * {
+    margin: 0.5em;
+  }
+  #scene-init input, button {
+    border: none;
+    padding: 1em;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    outline: none;
+  }
+  #scene-init button {
+    background: #a12058;
+    color: #fff;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  #scene-init button:hover {
+    background: #c72a6e;
+  }
+  #scene-init p {
+    color: #666;
+    font-size: 11pt;
+    text-align: left;
+    margin: 0 5em;
+  }
+  #scene-init h1 {
+    font-family: 'Stick', sans-serif;
+    font-size: 45pt;
+    color: #a12058;
+    margin-left: 15px;
+  }
+
+
+#scene-main {
+  display: none;
+}
+
+.content {
+  margin: 1em;
+  border-radius: 20px;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 1);
+  text-align: center;
+}
+  .content * {
+    margin: 0 auto;
+  }
+  .content p {
+    color: #fff;
+    font-size: 18pt;
+    line-height: 1.5em;
+  }
+
+  #score {
+    font-size: 60px;
+    font-weight: bold;
+    text-stroke: 5px #c661e8;
+    -webkit-text-stroke: 3px #c661e8;
+    color: #eaebc0;
+  }
+  .score-val {
+    font-family: 'Reggae One', cursive;
+    font-weight: bold;
+    text-stroke: 10px #c661e8;
+    -webkit-text-stroke: 10px #c661e8;
+    color: #fff;
+    line-height: 1em;
+  }
+  #score-main {
+    font-size: 200pt;
+  }
+  #score-sub {
+    font-size: 100pt;
+  }
+
+   p.note-info {
+     width: 300px;
+     box-shadow: 0px 9px 3px -3px #5fc4e8;
+     font-size: 22pt;
+   }
+   #username {
+     margin-top: 1em;
+   }
+
