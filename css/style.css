@@ -11,6 +11,16 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
 }
+
+#scene-init {
+    display: block;
+}
+
+
+#scene-main {
+    display: none;
+}
+
 .content {
   margin: 1em;
   border-radius: 20px;

@@ -1,11 +1,28 @@
 'use strict'
 
-let test_frequencies = []
+document.addEventListener('DOMContentLoaded', () => {
+    const btn_start = document.querySelector('#btn-start')
+    btn_start.addEventListener('click', () => {
+        const username = document.querySelector('#scene-init input')
+        document.querySelector('#username').innerText = username.value
 
-window.addEventListener('load', initialize)
+        switch_scene('main')
+        initialize()
+    })
+
+    function switch_scene(name){
+        for (const scene of document.querySelectorAll('.scene')) {
+            scene.style.display = 'none'
+        }
+
+        document.querySelector(`#scene-${name}`).style.display = 'block'
+    }
+})
 
 const correlation_worker = new Worker('./js/correlation_worker.js')
 correlation_worker.addEventListener('message', interpret_correlation_result)
+
+let test_frequencies = []
 
 async function initialize() {
     const G3 = 195.998
