@@ -1,6 +1,9 @@
 'use strict'
 
+let target_note
+
 document.addEventListener('DOMContentLoaded', () => {
+    // init scene
     const saved = localStorage.getItem("username")
     const userinput = document.querySelector('#scene-init input')
 
@@ -8,6 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
         userinput.value = saved
     }
 
+    // select scene
+    for (const n of document.querySelectorAll('#scene-select li')) {
+        n.addEventListener('click', e => {
+            document.querySelector('.now-playing').removeAttribute('class')
+            e.currentTarget.setAttribute('class', 'now-playing')
+            target_note = e.currentTarget.innerText.split('\n')[0]
+            console.log(target_note)
+        })
+    }
+
+    // to main scene
     const btn_start = document.querySelector('#btn-start')
     btn_start.addEventListener('click', () => {
         const username = (() => {
@@ -21,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('username', username)
 
         switch_scene('main')
+        target_note = document.querySelector('.now-playing').innerText.split('\n')[0]
         initialize()
     })
 
@@ -99,9 +114,7 @@ let scores = { 'prev-prev': -1, 'prev': -1, 'now': -1 }
 let sum_counter = 0
 let s
 
-// TODO
 const test_time = 20
-const target_note = 'ラ'
 
 function interpret_correlation_result(event) {
     const frequency_amplitudes = event.data.frequency_amplitudes
