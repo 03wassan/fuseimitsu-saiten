@@ -61,6 +61,63 @@ body {
     margin-left: 15px;
   }
 
+#scene-select {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  margin: auto;
+  text-align: center;
+  width: 600px;
+  height: 600px;
+}
+  #scene-select h2 {
+    color: #eee;
+    font-size: 23pt;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 1px dashed #888;
+    padding: 0.5em 0;
+  }
+  #scene-select ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+    #scene-select ul li {
+      width: 100px;
+      height: 100px;
+      color: #eee;
+      background: rgba(0, 0, 0, 0.7);
+      box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+      margin: 20px;
+      text-align: center;
+      line-height: 80px;
+      border: 5px solid rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      font-size: 20pt;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+    #scene-select ul li.now-playing {
+      border-color: #a12058;
+    }
+    #scene-select ul li:hover {
+      border-color: #a12058;
+    }
+      #scene-select ul li span {
+        display: block;
+        margin-top: -50px;
+        color: #666;
+        font-size: 12pt;
+      }
 
 #scene-main {
   display: none;
