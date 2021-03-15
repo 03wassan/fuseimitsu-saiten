@@ -11,6 +11,10 @@ body {
   background-position: center center;
   background-repeat: no-repeat;
 }
+button {
+    border: none;
+    outline: none;
+}
 
 .scene {
   padding: 1em;
@@ -32,7 +36,7 @@ body {
   #scene-init * {
     margin: 0.5em;
   }
-  #scene-init input, button {
+  #scene-init input, #scene-init button {
     border: none;
     padding: 1em;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
@@ -123,51 +127,68 @@ body {
   display: none;
 }
 
-.content {
-  margin: 1em;
-  border-radius: 20px;
-  padding: 1em;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 1);
-  text-align: center;
-}
-  .content * {
-    margin: 0 auto;
+  #scene-main button {
+    width: 80px;
+    height: 60px;
+    margin: 0 1em;
+    border-radius: 10px;
+    font-size: 13pt;
+    transition: 0.3s;
+    cursor: pointer;
   }
-  .content p {
+  #scene-main button#btn-select {
+    background: #a12058;
     color: #fff;
-    font-size: 18pt;
-    line-height: 1.5em;
+  }
+  #scene-main button#btn-select:hover {
+    background: #c72a6e;
   }
 
-  #score {
-    font-size: 60px;
-    font-weight: bold;
-    text-stroke: 5px #c661e8;
-    -webkit-text-stroke: 3px #c661e8;
-    color: #eaebc0;
+  .content {
+    margin: 1em;
+    border-radius: 20px;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 1);
+    text-align: center;
   }
-  .score-val {
-    font-family: 'Reggae One', cursive;
-    font-weight: bold;
-    text-stroke: 10px #c661e8;
-    -webkit-text-stroke: 10px #c661e8;
-    color: #fff;
-    line-height: 1em;
-  }
-  #score-main {
-    font-size: 200pt;
-  }
-  #score-sub {
-    font-size: 100pt;
-  }
+    .content * {
+      margin: 0 auto;
+    }
+    .content p {
+     2color: #fff;
+      font-size: 18pt;
+      line-height: 1.5em;
+    }
 
-   p.note-info {
-     width: 300px;
-     box-shadow: 0px 9px 3px -3px #5fc4e8;
-     font-size: 22pt;
-   }
-   #username {
-     margin-top: 1em;
-   }
+    #score {
+      font-size: 60px;
+      font-weight: bold;
+      text-stroke: 5px #c661e8;
+      -webkit-text-stroke: 3px #c661e8;
+      color: #eaebc0;
+    }
+    .score-val {
+      font-family: 'Reggae One', cursive;
+      font-weight: bold;
+      text-stroke: 10px #c661e8;
+      -webkit-text-stroke: 10px #c661e8;
+      color: #fff;
+      line-height: 1em;
+    }
+    #score-main {
+      font-size: 200pt;
+    }
+    #score-sub {
+      font-size: 100pt;
+    }
+
+     p.note-info {
+       width: 300px;
+       box-shadow: 0px 9px 3px -3px #5fc4e8;
+       font-size: 22pt;
+     }
+     #username {
+       margin-top: 1em;
+     }
 

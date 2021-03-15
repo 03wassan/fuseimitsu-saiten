@@ -1,8 +1,18 @@
 'use strict'
 
 let target_note
+let score, scores
+
+let sum_counter = 0
+let s
+
+// TODO change me
+const test_time = 20
+
 
 document.addEventListener('DOMContentLoaded', () => {
+    init_score()
+
     // init scene
     const saved = localStorage.getItem("username")
     const userinput = document.querySelector('#scene-init input')
@@ -16,10 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         n.addEventListener('click', e => {
             document.querySelector('.now-playing').removeAttribute('class')
             e.currentTarget.setAttribute('class', 'now-playing')
-            target_note = e.currentTarget.innerText.split('\n')[0]
-            console.log(target_note)
+            switch_target_notes(e.currentTarget)
+            switch_scene('main')
+            init_score()
         })
     }
+
+    const btn_select = document.querySelector('#btn-select')
+    btn_select.addEventListener('click', () => {
+        switch_scene('select')
+    })
 
     // to main scene
     const btn_start = document.querySelector('#btn-start')
@@ -34,17 +50,31 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#username').innerText = username
         localStorage.setItem('username', username)
 
-        switch_scene('main')
-        target_note = document.querySelector('.now-playing').innerText.split('\n')[0]
+        switch_scene('select')
         initialize()
     })
 
-    function switch_scene(name){
+    function init_score() {
+        score = 0
+        scores = { 'prev-prev': -1, 'prev': -1, 'now': -1 }
+        document.getElementById('score-main').textContent = '0'
+        document.getElementById('score-sub').textContent = '.000'
+    }
+
+    function switch_scene(name) {
         for (const scene of document.querySelectorAll('.scene')) {
             scene.style.display = 'none'
         }
 
         document.querySelector(`#scene-${name}`).style.display = 'block'
+    }
+
+    function switch_target_notes(selectedElm) {
+        const [note_ja, note_en] = selectedElm.innerText.split('\n')
+        target_note = note_ja
+
+        document.getElementById('note-name').textContent = note_ja
+        document.getElementById('note-name-en').textContent = note_en
     }
 })
 
@@ -109,13 +139,6 @@ function use_stream(stream) {
     script_processor.onaudioprocess = window.capture_audio
 }
 
-let score = 0
-let scores = { 'prev-prev': -1, 'prev': -1, 'now': -1 }
-let sum_counter = 0
-let s
-
-const test_time = 20
-
 function interpret_correlation_result(event) {
     const frequency_amplitudes = event.data.frequency_amplitudes
 
@@ -141,19 +164,6 @@ function interpret_correlation_result(event) {
     const confidence = maximum_magnitude / average
     const confidence_threshold = 60
     const dominant_frequency = test_frequencies[maximum_index]
-
-    // TODO
-    document.getElementById('note-name').textContent = 'ラ'
-    document.getElementById('note-name-en').textContent = 'A'
-    /*
-    if (confidence > confidence_threshold) {
-        document.getElementById('note-name').textContent = `${dominant_frequency.name}`
-        document.getElementById('note-name-en').textContent = `${dominant_frequency.name_en}`
-    } else {
-        document.getElementById('note-name').textContent = '(˘ω˘)'
-        document.getElementById('note-name-en').textContent = '(˘ω˘)'
-    }
-    */
 
     // TODO receive target note name and check
     // TODO consider gap true/false to deduction
@@ -198,3 +208,5 @@ function interpret_correlation_result(event) {
         score = 0
     }
 }
+
+
