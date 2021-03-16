@@ -16,11 +16,12 @@
       width: 70px;
       height: 70px;
       margin: 10px;
-      font-size: 16pt;
-      line-height: 60px;
+      font-size: 15pt;
+      line-height: 55px;
     }
       #scene-select ul li span {
-        margin-top: -36px;
+        margin-top: -30px;
+        font-size: 11pt;
       }
 
 #scene-main {
@@ -29,7 +30,7 @@
     margin-bottom: 1em;
   }
     .content p {
-      font-size: 15pt;
+      font-size: 13pt;
     }
     #score {
       font-size: 20pt;
@@ -38,16 +39,16 @@
       -webkit-text-stroke: 1px #c661e8;
     }
     #score-main {
-      font-size: 80pt;
+      font-size: 64pt;
     }
     #score-sub {
-      font-size: 40pt;
+      font-size: 32pt;
     }
     .score-val {
       text-stroke: 3px #c661e8;
       -webkit-text-stroke: 3px #c661e8;
     }
     p.note-info {
-      font-size: 22pt;
+      font-size: 18pt;
     }
 
