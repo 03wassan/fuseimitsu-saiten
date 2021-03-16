@@ -1,64 +1,44 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
-  font-family: 'Hiragino Sans', 'Meiryo', sans-serif;
-}
-body {
-  background-image: url('../image/bg.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
 #scene-init {
-    display: block;
+  width: 600px;
+  height: 400px;
 }
+  #scene-init h1 {
+    font-size: 45pt;
+  }
+  #scene-init p {
+    font-size: 11pt;
+    margin: 0 5em;
+  }
 
+#scene-select {
+  width: 600px;
+  height: 600px;
+}
+    #scene-select ul li {
+      width: 100px;
+      height: 100px;
+      margin: 20px;
+      font-size: 20pt;
+      line-height: 80px;
+    }
+      #scene-select ul li span {
+        margin-top: -50px;
+      }
 
 #scene-main {
-    display: none;
 }
-
-.content {
-  margin: 1em;
-  border-radius: 20px;
-  padding: 1em;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 1);
-  text-align: center;
-}
-  .content * {
-      margin: 0 auto;
+  .content {
+    margin: 1em auto;
+    max-width: 1000px;
   }
-  .content p {
-    color: #fff;
-    font-size: 18pt;
-    line-height: 1.5em;
-  }
-
-  h1 {
-    font-family: 'Stick', sans-serif;
-    font-size: 30pt;
-    color: #fff;
-    margin-left: 15px;
-  }
-
-  #score {
-    font-size: 60px;
-    font-weight: bold;
-    text-stroke: 5px #c661e8;
-    -webkit-text-stroke: 3px #c661e8;
-    color: #eaebc0;
-  }
-    .score-val {
-      font-family: 'Reggae One', cursive;
+    .content p {
+      font-size: 18pt;
+    }
+    #score {
+      font-size: 42pt;
       font-weight: bold;
-      text-stroke: 10px #c661e8;
-      -webkit-text-stroke: 10px #c661e8;
-      color: #fff;
-      line-height: 1em;
+      text-stroke: 5px #c661e8;
+      -webkit-text-stroke: 5px #c661e8;
     }
     #score-main {
       font-size: 200pt;
@@ -66,13 +46,12 @@ body {
     #score-sub {
       font-size: 100pt;
     }
+    .score-val {
+      text-stroke: 10px #c661e8;
+      -webkit-text-stroke: 10px #c661e8;
+    }
+    p.note-info {
+      font-size: 22pt;
+    }
 
-   p.note-info {
-     width: 300px;
-     box-shadow: 0px 9px 3px -3px #5fc4e8;
-     font-size: 22pt;
-   }
-   #username {
-     margin-top: 1em;
-   }
 

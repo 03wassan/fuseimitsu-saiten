@@ -30,8 +30,7 @@ button {
   background: rgba(255, 255, 255, 0.7);
   margin: auto;
   text-align: center;
-  width: 600px;
-  height: 400px;
+  overflow: auto;
 }
   #scene-init * {
     margin: 0.5em;
@@ -54,13 +53,10 @@ button {
   }
   #scene-init p {
     color: #666;
-    font-size: 11pt;
     text-align: left;
-    margin: 0 5em;
   }
   #scene-init h1 {
     font-family: 'Stick', sans-serif;
-    font-size: 45pt;
     color: #a12058;
     margin-left: 15px;
   }
@@ -76,8 +72,7 @@ button {
   border-radius: 20px;
   margin: auto;
   text-align: center;
-  width: 600px;
-  height: 600px;
+  overflow: auto;
 }
   #scene-select h2 {
     color: #eee;
@@ -95,17 +90,12 @@ button {
     flex-wrap: wrap;
   }
     #scene-select ul li {
-      width: 100px;
-      height: 100px;
       color: #eee;
       background: rgba(0, 0, 0, 0.7);
       box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
-      margin: 20px;
       text-align: center;
-      line-height: 80px;
       border: 5px solid rgba(0, 0, 0, 0.3);
       border-radius: 10px;
-      font-size: 20pt;
       font-weight: bold;
       cursor: pointer;
       transition: 0.5s;
@@ -118,7 +108,6 @@ button {
     }
       #scene-select ul li span {
         display: block;
-        margin-top: -50px;
         color: #666;
         font-size: 12pt;
       }
@@ -145,7 +134,6 @@ button {
   }
 
   .content {
-    margin: 1em;
     border-radius: 20px;
     padding: 1em;
     background-color: rgba(0, 0, 0, 0.7);
@@ -157,38 +145,28 @@ button {
     }
     .content p {
       color: #fff;
-      font-size: 18pt;
       line-height: 1.5em;
     }
 
     #score {
-      font-size: 60px;
-      font-weight: bold;
-      text-stroke: 5px #c661e8;
-      -webkit-text-stroke: 3px #c661e8;
       color: #eaebc0;
     }
     .score-val {
       font-family: 'Reggae One', cursive;
       font-weight: bold;
-      text-stroke: 10px #c661e8;
-      -webkit-text-stroke: 10px #c661e8;
       color: #fff;
       line-height: 1em;
-    }
-    #score-main {
-      font-size: 200pt;
-    }
-    #score-sub {
-      font-size: 100pt;
     }
 
      p.note-info {
        width: 300px;
        box-shadow: 0px 9px 3px -3px #5fc4e8;
-       font-size: 22pt;
      }
      #username {
        margin-top: 1em;
      }
+
+  .control {
+    text-align: center;
+  }
 

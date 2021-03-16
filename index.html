@@ -7,9 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Stick&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/common.css">
-    <link media="only screen and (max-device-width: 600px)" rel="stylesheet" href="./css/smart.css">
-    <link media="only screen and (min-device-width: 601px)" rel="stylesheet" href="./css/style.css">
+    <link media="only screen and (max-device-width: 700px)" rel="stylesheet" href="./css/smart.css">
+    <link media="only screen and (min-device-width: 701px)" rel="stylesheet" href="./css/style.css">
     <script src="js/main.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
     <header>
@@ -57,7 +60,9 @@
             <p>前回　<span id="score-prev">---.---</span>　点</p>
             <p>前々回　<span id="score-prev-prev">---.---</span>　点</p>
         </div>
-        <button id="btn-select">選曲</button>
+        <div class="control">
+            <button id="btn-select">選曲</button>
+        </div>
     </section>
 </body>
 </html>
