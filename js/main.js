@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         scores = { 'prev-prev': -1, 'prev': -1, 'now': -1 }
         document.getElementById('score-main').textContent = '0'
         document.getElementById('score-sub').textContent = '.000'
+        document.getElementById('score-prev').textContent = '---.---'
+        document.getElementById('score-prev-prev').textContent = '---.---'
     }
 
     function switch_scene(name) {
