@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function init_score() {
         score = 0
         scores = { 'prev-prev': -1, 'prev': -1, 'now': -1 }
+        sum_counter = 0
         document.getElementById('score-main').textContent = '0'
         document.getElementById('score-sub').textContent = '.000'
         document.getElementById('score-prev').textContent = '---.---'
