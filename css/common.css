@@ -190,21 +190,14 @@ button {
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 1);
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 50%;
-  border: 30px solid rgba(0, 0, 0, 0.9);
   margin: auto;
   text-align: center;
-  width: 400px;
-  height: 400px;
   transition: 0.3s;
 }
   #scene-tuner p#tuner-note {
-    line-height: 340px;
-    font-size: 100pt;
     color: #fff;
   }
   #scene-tuner p#tuner-confidence {
-    margin-top: -70px;
-    font-size: 42pt;
     color: #aaa;
   }
   #scene-tuner button#btn-main {
@@ -216,7 +209,6 @@ button {
     background: #3da175;
     color: #fff;
     position: absolute;
-    top: 480px;
     right: 0;
     left: 0;
     margin: auto;

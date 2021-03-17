@@ -55,4 +55,21 @@
       font-size: 22pt;
     }
 
-
+#scene-tuner {
+  width: 400px;
+  height: 400px;
+  border: 30px solid rgba(0, 0, 0, 0.9);
+}
+  #scene-tuner p#tuner-note {
+    line-height: 340px;
+  }
+  #scene-tuner p#tuner-note {
+    font-size: 100pt;
+  }
+  #scene-tuner p#tuner-confidence {
+    margin-top: -70px;
+    font-size: 42pt;
+  }
+  #scene-tuner button#btn-main {
+    top: 480px;
+  }
