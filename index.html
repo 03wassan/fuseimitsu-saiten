@@ -32,19 +32,28 @@
         <div>
             <h2>♪ 音リスト</h2>
             <ul>
-                <li id="note-a" class="now-playing">ラ<span>A</span></li>
-                <li id="note-as">ラ#<span>A#/B♭</span></li>
-                <li id="note-b">シ<span>B</span></li>
-                <li id="note-c">ド<span>C</span></li>
-                <li id="note-cs">ド#<span>C#/D♭</span></li>
-                <li id="note-d">レ<span>D</span></li>
-                <li id="note-ds">レ#<span>D#/E♭</span></li>
-                <li id="note-e">ミ<span>E</span></li>
-                <li id="note-f">ファ<span>F</span></li>
-                <li id="note-fs">ファ#<span>F#/G♭</span></li>
-                <li id="note-g">ソ<span>G</span></li>
-                <li id="note-gs">ソ#<span>G#/A♭</span></li>
+                <li class="now-playing">ラ<span>A</span></li>
+                <li>ラ#<span>A#/B♭</span></li>
+                <li>シ<span>B</span></li>
+                <li>ド<span>C</span></li>
+                <li>ド#<span>C#/D♭</span></li>
+                <li>レ<span>D</span></li>
+                <li>レ#<span>D#/E♭</span></li>
+                <li>ミ<span>E</span></li>
+                <li>ファ<span>F</span></li>
+                <li>ファ#<span>F#/G♭</span></li>
+                <li>ソ<span>G</span></li>
+                <li>ソ#<span>G#/A♭</span></li>
             </ul>
+        </div>
+    </section>
+    <section class="scene" id="scene-tuner">
+        <div>
+            <p id="tuner-note">-</p>
+            <p id="tuner-confidence">- %</p>
+        </div>
+        <div class="control">
+            <button id="btn-main">戻る</button>
         </div>
     </section>
     <section class="scene" id="scene-main">
@@ -62,6 +71,7 @@
         </div>
         <div class="control">
             <button id="btn-select">選曲</button>
+            <button id="btn-tuner">音判定</button>
         </div>
     </section>
 </body>

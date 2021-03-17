@@ -124,12 +124,22 @@ button {
     transition: 0.3s;
     cursor: pointer;
   }
+  #scene-main button {
+    color: #fff;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    border: 3px solid #ddd;
+  }
   #scene-main button#btn-select {
     background: #a12058;
-    color: #fff;
   }
   #scene-main button#btn-select:hover {
     background: #c72a6e;
+  }
+  #scene-main button#btn-tuner {
+    background: #267aad;
+  }
+  #scene-main button#btn-tuner:hover {
+    background: #3690c7;
   }
 
   .content {
@@ -170,3 +180,46 @@ button {
     text-align: center;
   }
 
+#scene-tuner {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  border: 30px solid rgba(0, 0, 0, 0.9);
+  margin: auto;
+  text-align: center;
+  width: 400px;
+  height: 400px;
+  transition: 0.3s;
+}
+  #scene-tuner p#tuner-note {
+    line-height: 340px;
+    font-size: 100pt;
+    color: #fff;
+  }
+  #scene-tuner p#tuner-confidence {
+    margin-top: -70px;
+    font-size: 42pt;
+    color: #aaa;
+  }
+  #scene-tuner button#btn-main {
+    width: 80px;
+    height: 60px;
+    border-radius: 10px;
+    border: 3px solid #ddd;
+    font-size: 13pt;
+    background: #3da175;
+    color: #fff;
+    position: absolute;
+    top: 480px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    transition: 0.3s;
+    cursor: pointer;
+  }

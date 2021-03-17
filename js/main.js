@@ -37,6 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
         switch_scene('select')
     })
 
+    const btn_tuner = document.querySelector('#btn-tuner')
+    btn_tuner.addEventListener('click', () => {
+        switch_scene('tuner')
+    })
+
+    const btn_main = document.querySelector('#btn-main')
+    btn_main.addEventListener('click', () => {
+        switch_scene('main')
+        init_score()
+    })
+
     // to main scene
     const btn_start = document.querySelector('#btn-start')
     btn_start.addEventListener('click', () => {
@@ -176,10 +187,23 @@ function interpret_correlation_result(event) {
     s = (confidence > confidence_threshold ? confidence_threshold : confidence) / confidence_threshold
     if (dominant_frequency.name === target_note) {
         score += s
-        console.log(`OK ${dominant_frequency.name}:`, s)
     } else {
         score += s * 0.3
-        console.log(`NG ${dominant_frequency.name}:`, s)
+    }
+
+    document.querySelector('#scene-tuner').style.borderColor = 'rgba(0, 0, 0, 0.9)'
+    document.querySelector('#tuner-note').style.color = '#fff'
+    document.querySelector('#tuner-confidence').style.color = '#aaa'
+    if (confidence > 30) {
+        document.querySelector('#tuner-note').innerText = dominant_frequency.name
+        document.querySelector('#tuner-confidence').innerText = `${Math.round(confidence * 1000) / 1000}%`
+
+        if (confidence > 60) {
+            document.querySelector('#scene-tuner').style.borderColor = 'rgba(61, 161, 117, 0.9)'
+        }
+    } else {
+        document.querySelector('#tuner-note').style.color = '#444'
+        document.querySelector('#tuner-confidence').style.color = '#666'
     }
 
     if (++sum_counter === test_time) {
