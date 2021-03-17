@@ -160,6 +160,7 @@ button {
      p.note-info {
        width: 300px;
        box-shadow: 0px 9px 3px -3px #5fc4e8;
+       margin-bottom: 0.5em;
      }
      #username {
        margin-top: 1em;
